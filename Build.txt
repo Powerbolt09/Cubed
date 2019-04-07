@@ -1,0 +1,2 @@
+Compile standalone with Browserify:
+../> Browserify Cubed.js --standalone Cubed > ../Release/Cubed.js

@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link href="CSS/index.css" type="text/css" rel="Stylesheet"></link>
+        <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="JS/Cubed/release/Cubed.js"></script>
+        <script type="text/javascript" src="JS/App.js"></script>
+
+        <!--VERTEX SHADER-->
+        <script id="shader-vs" type="x-shader/x-vertex">
+            attribute vec4 a_position;
+            uniform mat4 u_matrix;
+            attribute vec4 a_color;
+            varying vec4 v_color;
+
+            void main() {
+                gl_Position = u_matrix * a_position;
+                v_color = a_color;
+            }
+        </script>
+        <!--END VERTEX SHADER-->
+        <!--FRAGMENT SHADER-->
+        <script id="shader-fs" type="x-shader/x-fragment">
+            precision mediump float;
+            varying vec4 v_color;
+
+            void main ()
+            {
+               gl_FragColor = v_color;
+            }
+        </script>
+        <!--END FRAGMENT SHADER-->
+    </head>
+    <body style="margin:0px;">
+        <canvas id="CanvasMain" style="width: 100vw; height: 100vh; display: block; position: absolute;"></canvas>
+        <canvas id="CanvasDiag" style="width: 100vw; height: 100vh; display: block; position: absolute;"></canvas>
+        <input type="range" id="CameraSlider" style="position:absolute; display:block; margin-left:10px; margin-top:110px" min="0" max="2" value="0">
+    </body>
+</html>
